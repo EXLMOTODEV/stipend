@@ -25,7 +25,7 @@ cd ../../
 
 sed -i "s/-Wl,--large-address-aware//g" stipend.pro
 sed -i "s/BOOST_LIB_SUFFIX=-mgw49-mt-s-1_57/BOOST_LIB_SUFFIX=-mt/g" stipend.pro
-sed -i "s/LIBS += -L\/usr\/local\/lib -L\/usr\/lib -lsecp256k1/LIBS += -L\/usr\/local\/lib -L\/usr\/lib -lsecp256k1 -lgmp/g" stipend.pro
+sed -i "s/LIBS += -L\/usr\/local\/lib -L\/usr\/lib -lsecp256k1/LIBS += -L\/usr\/local\/lib -lsecp256k1 -lgmp/g" stipend.pro
 sed -i "s/OS_WINDOWS_CROSSCOMPILE | NATIVE_WINDOWS)/OS_WINDOWS_CROSSCOMPILE | NATIVE_WINDOWS | MINGW64_NT-6.1 | MINGW32_NT-6.1 | MINGW32_NT-10.0 | MINGW64_NT-10.0 | MINGW32_NT-6.3 | MINGW64_NT-6.3)/g" src/leveldb/build_detect_platform
 make -j4 -C src/leveldb/ libleveldb.a libmemenv.a
 /mingw64/qt5-static/bin/qmake CONFIG+=release CONFIG+=static INCLUDEPATH+=/usr/local/include LIBS+='-static-libgcc -static-libstdc++ -L/usr/local/lib' stipend.pro
